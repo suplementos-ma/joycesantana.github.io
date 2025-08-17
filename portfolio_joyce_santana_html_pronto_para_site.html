@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Joyce Santana — Portfólio Profissional (Informática & Desenvolvimento)</title>
+  <meta name="description" content="Portfólio profissional de Joyce Santana: programação, desenvolvimento de sites, resolução de bugs, manutenção e segurança (antivírus). Atendimento rápido e personalizado." />
+  <meta name="theme-color" content="#101114" />
+  <meta property="og:title" content="Joyce Santana — Portfólio Profissional" />
+  <meta property="og:description" content="Programação, sites, resolução de bugs, otimização, manutenção e antivírus completo." />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="pt_BR" />
+
+  <style>
+    :root{
+      --bg:#0c0d10;         /* fundo quase preto */
+      --card:#121419;       /* cartões */
+      --muted:#9aa3b2;      /* texto secundário */
+      --text:#e7ecf2;       /* texto principal */
+      --accent:#e11d48;     /* vermelho framboesa */
+      --accent-2:#fb7185;   /* claro para hover/grad */
+      --ring: 0 0 0 3px rgba(225,29,72,.25);
+      --radius: 18px;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;height:100%;background:var(--bg);color:var(--text);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    .container{width:min(1100px,92%);margin-inline:auto}
+
+    /* Header */
+    header{position:sticky;top:0;backdrop-filter:saturate(1.2) blur(8px);background:linear-gradient(180deg,rgba(12,13,16,.9),rgba(12,13,16,.65));z-index:10;border-bottom:1px solid rgba(255,255,255,.06)}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+    .brand{display:flex;gap:10px;align-items:center;font-weight:700;letter-spacing:.3px}
+    .logo{width:34px;height:34px;border-radius:9px;display:grid;place-items:center;background:conic-gradient(from 140deg at 50% 50%,var(--accent),var(--accent-2));box-shadow:var(--shadow)}
+    .logo svg{filter:drop-shadow(0 2px 6px rgba(0,0,0,.35))}
+    .nav a.btn{margin-left:10px}
+
+    /* Buttons */
+    .btn{display:inline-flex;align-items:center;gap:10px;padding:10px 16px;border-radius:999px;border:1px solid rgba(255,255,255,.09);background:#14161c;transition:.2s ease;box-shadow:0 2px 0 rgba(255,255,255,.03) inset}
+    .btn:hover{transform:translateY(-1px);box-shadow:0 6px 18px rgba(0,0,0,.35)}
+    .btn.primary{background:linear-gradient(90deg,var(--accent),var(--accent-2));border:none}
+
+    /* Hero */
+    .hero{padding:72px 0 42px}
+    .hero .grid{display:grid;grid-template-columns:1.1fr .9fr;gap:36px;align-items:center}
+    .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12px;color:var(--muted);letter-spacing:.12em;text-transform:uppercase;background:#12141a;border:1px solid rgba(255,255,255,.06);padding:6px 10px;border-radius:999px}
+    h1{font-size:clamp(28px,4.5vw,48px);line-height:1.15;margin:14px 0 8px}
+    .lead{font-size:clamp(16px,1.6vw,19px);color:#cbd3df;margin:6px 0 22px}
+    .hero .cta{display:flex;flex-wrap:wrap;gap:12px}
+    .hero-card{background:radial-gradient(1200px 300px at 20% -10%,rgba(225,29,72,.18),rgba(0,0,0,0)),#0f1116;border:1px solid rgba(255,255,255,.06);padding:22px;border-radius:var(--radius);box-shadow:var(--shadow)}
+    .hero-card ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:10px 14px}
+    .hero-visual{position:relative;aspect-ratio:1.1;border-radius:var(--radius);overflow:hidden;background:linear-gradient(160deg,#11131a 0%,#0b0d12 60%);border:1px solid rgba(255,255,255,.06)}
+    .hero-visual .orb{position:absolute;inset:auto auto -20% -20%;width:70%;height:70%;background:radial-gradient(circle at 30% 30%,rgba(255,255,255,.14),transparent 55%),radial-gradient(circle at 60% 60%,rgba(225,29,72,.28),transparent 60%);filter:blur(20px)}
+
+    /* Section base */
+    section{padding:54px 0;border-top:1px solid rgba(255,255,255,.06)}
+    .section-head{display:flex;align-items:end;justify-content:space-between;margin-bottom:22px}
+    .section-head h2{margin:0;font-size:clamp(22px,2.8vw,30px)}
+    .section-head p{margin:4px 0 0;color:var(--muted)}
+
+    /* Services */
+    .services{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
+    .service{grid-column:span 6;background:var(--card);border:1px solid rgba(255,255,255,.07);border-radius:var(--radius);padding:18px;transition:.2s}
+    .service:hover{transform:translateY(-2px)}
+    .service h3{margin:6px 0 8px;font-size:18px}
+    .service p{margin:0;color:#c7cfdb}
+    .service .tag{display:inline-block;margin-top:10px;font-size:12px;padding:6px 10px;border-radius:999px;background:#171a21;border:1px solid rgba(255,255,255,.08);color:#cfd6e2}
+
+    @media (max-width:900px){.hero .grid{grid-template-columns:1fr}.services .service{grid-column:span 12}}
+
+    /* Projects */
+    .projects{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
+    .project{grid-column:span 6;background:var(--card);border:1px solid rgba(255,255,255,.07);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column}
+    .project .thumb{aspect-ratio:16/9;background:linear-gradient(90deg,rgba(225,29,72,.25),rgba(251,113,133,.15)),linear-gradient(135deg,#161a23,#0e1016)}
+    .project .body{padding:16px}
+    .project h3{margin:4px 0 6px;font-size:18px}
+    .project p{margin:0;color:#c7cfdb}
+    .project .meta{margin-top:10px;font-size:12px;color:var(--muted)}
+    @media (max-width:900px){.project{grid-column:span 12}}
+
+    /* Testimonials (optional) */
+    .testi{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
+    .quote{grid-column:span 6;background:var(--card);border:1px solid rgba(255,255,255,.07);border-radius:var(--radius);padding:18px}
+    .quote p{margin:0}
+    .quote .who{margin-top:10px;color:var(--muted);font-size:14px}
+    @media (max-width:900px){.quote{grid-column:span 12}}
+
+    /* Contact */
+    .contact-card{background:linear-gradient(180deg,rgba(225,29,72,.12),transparent 60%),var(--card);border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);padding:22px}
+    .contact-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:12px}
+
+    /* Footer */
+    footer{padding:40px 0 60px;color:var(--muted)}
+
+    /* Utility */
+    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    @media (max-width:900px){.grid-2{grid-template-columns:1fr}}
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Joyce Santana",
+    "jobTitle": "Profissional de Informática e Desenvolvedora",
+    "url": "https://www.joycesantana.com",
+    "email": "mailto:contato@joycesantana.com",
+    "knowsAbout": [
+      "Programação",
+      "Desenvolvimento de Sites",
+      "Resolução de Bugs",
+      "Manutenção de Sistemas",
+      "Segurança e Antivírus"
+    ],
+    "sameAs": []
+  }
+  </script>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#top" aria-label="Ir para o início">
+        <span class="logo" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 3l8 4.5v9L12 21l-8-4.5v-9L12 3z" stroke="white" stroke-opacity=".85"/>
+            <path d="M12 7l4 2.3v5.4L12 17l-4-2.3V9.3L12 7z" fill="white" fill-opacity=".9"/>
+          </svg>
+        </span>
+        Joyce&nbsp;Santana
+      </a>
+      <nav>
+        <a href="#servicos" class="btn" aria-label="Ir para serviços">Serviços</a>
+        <a href="#projetos" class="btn" aria-label="Ir para projetos">Projetos</a>
+        <a href="#contato" class="btn primary" aria-label="Abrir contato">Contato</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- HERO -->
+    <section class="hero container">
+      <div class="grid">
+        <div>
+          <span class="eyebrow">Informática • Programação • Segurança</span>
+          <h1>Solucione bugs, acelere seu site e proteja seus sistemas — com uma parceira técnica focada em resultado.</h1>
+          <p class="lead">Sou <strong>Joyce Santana</strong>, programadora e especialista em informática. Atendo empresas e profissionais que precisam de <strong>sites rápidos</strong>, <strong>código confiável</strong> e <strong>segurança de ponta</strong> (antivírus, remoção de malware e hardening).</p>
+          <div class="cta">
+            <a class="btn primary" href="#contato">Solicitar orçamento</a>
+            <a class="btn" href="#servicos">Ver serviços</a>
+          </div>
+          <div class="hero-card" style="margin-top:18px">
+            <ul>
+              <li>✔️ Desenvolvimento de sites (institucional e loja)</li>
+              <li>✔️ Resolução de bugs e otimização de performance</li>
+              <li>✔️ Sistemas sob medida e integrações (APIs)</li>
+              <li>✔️ Antivírus completo e remoção de ameaças</li>
+              <li>✔️ Manutenção preventiva e backups</li>
+              <li>✔️ Consultoria de segurança</li>
+            </ul>
+          </div>
+        </div>
+        <div class="hero-visual" aria-hidden="true">
+          <div class="orb"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="servicos">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Serviços</h2>
+            <p>Atendimento rápido, documentação clara e foco no que gera valor.</p>
+          </div>
+        </div>
+        <div class="services">
+          <article class="service">
+            <h3>Desenvolvimento de Sites</h3>
+            <p>Sites institucionais e e‑commerce com design moderno, responsivo e SEO técnico. Integração com WhatsApp, Instagram e meios de pagamento.</p>
+            <span class="tag">HTML • CSS • JS • WordPress</span>
+          </article>
+          <article class="service">
+            <h3>Programação & Sistemas</h3>
+            <p>APIs e aplicações sob medida. Automação de tarefas e integrações entre plataformas.</p>
+            <span class="tag">Node • Python • PHP • SQL</span>
+          </article>
+          <article class="service">
+            <h3>Resolução de Bugs</h3>
+            <p>Diagnóstico rápido, correção de erros e melhoria de compatibilidade. Monitoramento e logs para evitar reincidência.</p>
+            <span class="tag">Debug • Observabilidade</span>
+          </article>
+          <article class="service">
+            <h3>Otimização de Performance</h3>
+            <p>Melhoria de velocidade (Core Web Vitals), cache, imagens e CDN. Resultados medidos.</p>
+            <span class="tag">Lighthouse • CWV</span>
+          </article>
+          <article class="service">
+            <h3>Segurança & Antivírus</h3>
+            <p>Instalação e configuração de antivírus, remoção de malware, hardening de servidores e sites. Políticas de backup e recuperação.</p>
+            <span class="tag">Endpoint • Hardening</span>
+          </article>
+          <article class="service">
+            <h3>Manutenção Contínua</h3>
+            <p>Atualizações, revisão de dependências, testes e relatórios mensais com indicadores de saúde do sistema.</p>
+            <span class="tag">SLA • Relatórios</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projetos">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Projetos em Destaque</h2>
+            <p>Alguns resultados recentes. (Substitua os textos abaixo pelos seus cases reais.)</p>
+          </div>
+        </div>
+        <div class="projects">
+          <article class="project">
+            <div class="thumb"></div>
+            <div class="body">
+              <h3>Site institucional rápido (99 no Lighthouse)</h3>
+              <p>Redesign completo com foco em Core Web Vitals e SEO técnico. +62% nas visitas orgânicas em 3 meses.</p>
+              <div class="meta">Stack: HTML, CSS, JS, otimização de imagens, CDN</div>
+            </div>
+          </article>
+          <article class="project">
+            <div class="thumb"></div>
+            <div class="body">
+              <h3>Correção de bug crítico em e‑commerce</h3>
+              <p>Erro intermitente no checkout corrigido com refatoração de API e melhoria de logs. Queda de 0,8% → 0,1% na taxa de falhas.</p>
+              <div class="meta">Stack: Node, Observabilidade, Tests</div>
+            </div>
+          </article>
+          <article class="project">
+            <div class="thumb"></div>
+            <div class="body">
+              <h3>Pacote de segurança & antivírus</h3>
+              <p>Remoção de malware, hardening e política de backups. Zero incidentes em 6 meses.</p>
+              <div class="meta">Stack: Endpoint, Firewall, Backups</div>
+            </div>
+          </article>
+          <article class="project">
+            <div class="thumb"></div>
+            <div class="body">
+              <h3>Automação de relatórios</h3>
+              <p>Script que consolida dados e envia relatórios diários por e‑mail e WhatsApp.</p>
+              <div class="meta">Stack: Python, Cron, APIs</div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS (opcional) -->
+    <section aria-labelledby="depoimentos">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2 id="depoimentos">Depoimentos</h2>
+            <p>Prova social de quem já contratou.</p>
+          </div>
+        </div>
+        <div class="testi">
+          <blockquote class="quote">
+            <p>“A Joyce resolveu um bug que travava nosso checkout há semanas. Atendimento rápido e comunicação clara.”</p>
+            <div class="who">— Camila R., E‑commerce de Moda</div>
+          </blockquote>
+          <blockquote class="quote">
+            <p>“Nosso site ficou muito mais rápido e seguro. O relatório mensal ajuda a acompanhar tudo.”</p>
+            <div class="who">— Marcos A., Clínica</div>
+          </blockquote>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contato">
+      <div class="container grid-2">
+        <div class="contact-card">
+          <h2>Vamos conversar</h2>
+          <p>Explique seu problema ou projeto em poucas linhas. Eu respondo com o plano de ação, prazo e valor.</p>
+          <div class="contact-actions">
+            <!-- Atualize o número abaixo para seu WhatsApp com DDI/DDD, apenas dígitos -->
+            <a class="btn primary" href="https://wa.me/5599999999999?text=Ol%C3%A1%20Joyce%2C%20gostaria%20de%20um%20or%C3%A7amento." target="_blank" rel="noopener">Falar no WhatsApp</a>
+            <a class="btn" href="mailto:contato@joycesantana.com?subject=Or%C3%A7amento&body=Oi%20Joyce%2C%20preciso%20de...">Enviar e‑mail</a>
+          </div>
+        </div>
+        <div class="contact-card" aria-live="polite">
+          <h2>Pacotes sugeridos</h2>
+          <ul>
+            <li><strong>Bug‑Fix Express</strong>: diagnóstico + correção de 1 bug crítico.</li>
+            <li><strong>Site Rápido</strong>: landing page otimizada com SEO técnico.</li>
+            <li><strong>Segurança Total</strong>: antivírus + hardening + backup.</li>
+            <li><strong>Manutenção PRO</strong>: atualizações, testes e relatório mensal.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;justify-content:space-between">
+        <div>&copy; <span id="y"></span> Joyce Santana. Todos os direitos reservados.</div>
+        <div>Feito com foco em performance e segurança.</div>
+      </div>
+    </div>
+  </footer>
+
+  <button class="btn primary" id="toTop" style="position:fixed;right:18px;bottom:18px;display:none" aria-label="Voltar ao topo">▲ Topo</button>
+
+  <script>
+    // ano dinâmico e botão topo
+    document.getElementById('y').textContent = new Date().getFullYear();
+    const toTop = document.getElementById('toTop');
+    window.addEventListener('scroll', ()=>{
+      toTop.style.display = window.scrollY > 400 ? 'inline-flex' : 'none';
+    });
+    toTop.addEventListener('click', ()=> window.scrollTo({top:0, behavior:'smooth'}));
+
+    // Acessibilidade: foco visível
+    document.addEventListener('keydown', (e)=>{
+      if(e.key === 'Tab') document.body.style.boxShadow = 'var(--ring)';
+    });
+  </script>
+</body>
+</html>
